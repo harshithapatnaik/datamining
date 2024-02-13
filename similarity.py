@@ -22,7 +22,9 @@ terms = ["soccer", "favorite", "sport", "like", "one", "support", "olympic", "ga
 def create_document_term_matrix(documents, terms):
     matrix = []
     for doc in documents:
-        vector = [doc.split().count(term) for term in terms]
+        doc.split()
+        stripSpecialChar = [term.strip(',') for term in doc.split()]
+        vector = [stripSpecialChar.count(term) for term in terms]
         matrix.append(vector)
     return np.array(matrix)
 
